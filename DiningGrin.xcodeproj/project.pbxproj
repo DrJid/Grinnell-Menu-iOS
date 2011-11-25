@@ -1,0 +1,282 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16346D1C147F27F400E67157 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16346D1B147F27F400E67157 /* UIKit.framework */; };
+		16346D1E147F27F400E67157 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16346D1D147F27F400E67157 /* Foundation.framework */; };
+		16346D20147F27F400E67157 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16346D1F147F27F400E67157 /* CoreGraphics.framework */; };
+		16346D26147F27F500E67157 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 16346D24147F27F500E67157 /* InfoPlist.strings */; };
+		16346D28147F27F500E67157 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D27147F27F500E67157 /* main.m */; };
+		16346D2C147F27F500E67157 /* DiningGrinAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D2B147F27F500E67157 /* DiningGrinAppDelegate.m */; };
+		16346D2F147F27F500E67157 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16346D2D147F27F500E67157 /* MainStoryboard.storyboard */; };
+		16346D32147F27F500E67157 /* DiningGrinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D31147F27F500E67157 /* DiningGrinViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		16346D17147F27F400E67157 /* DiningGrin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiningGrin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16346D1B147F27F400E67157 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		16346D1D147F27F400E67157 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		16346D1F147F27F400E67157 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		16346D23147F27F500E67157 /* DiningGrin-Info.plist */ = {isa = PBXFileReference; path = "DiningGrin-Info.plist"; sourceTree = "<group>"; };
+		16346D25147F27F500E67157 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		16346D27147F27F500E67157 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		16346D29147F27F500E67157 /* DiningGrin-Prefix.pch */ = {isa = PBXFileReference; path = "DiningGrin-Prefix.pch"; sourceTree = "<group>"; };
+		16346D2A147F27F500E67157 /* DiningGrinAppDelegate.h */ = {isa = PBXFileReference; path = DiningGrinAppDelegate.h; sourceTree = "<group>"; };
+		16346D2B147F27F500E67157 /* DiningGrinAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiningGrinAppDelegate.m; sourceTree = "<group>"; };
+		16346D2E147F27F500E67157 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		16346D30147F27F500E67157 /* DiningGrinViewController.h */ = {isa = PBXFileReference; path = DiningGrinViewController.h; sourceTree = "<group>"; };
+		16346D31147F27F500E67157 /* DiningGrinViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiningGrinViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16346D14147F27F400E67157 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16346D1C147F27F400E67157 /* UIKit.framework in Frameworks */,
+				16346D1E147F27F400E67157 /* Foundation.framework in Frameworks */,
+				16346D20147F27F400E67157 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16346D0C147F27F400E67157 = {
+			isa = PBXGroup;
+			children = (
+				16346D21147F27F400E67157 /* DiningGrin */,
+				16346D1A147F27F400E67157 /* Frameworks */,
+				16346D18147F27F400E67157 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16346D18147F27F400E67157 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16346D17147F27F400E67157 /* DiningGrin.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16346D1A147F27F400E67157 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16346D1B147F27F400E67157 /* UIKit.framework */,
+				16346D1D147F27F400E67157 /* Foundation.framework */,
+				16346D1F147F27F400E67157 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		16346D21147F27F400E67157 /* DiningGrin */ = {
+			isa = PBXGroup;
+			children = (
+				16346D2A147F27F500E67157 /* DiningGrinAppDelegate.h */,
+				16346D2B147F27F500E67157 /* DiningGrinAppDelegate.m */,
+				16346D2D147F27F500E67157 /* MainStoryboard.storyboard */,
+				16346D30147F27F500E67157 /* DiningGrinViewController.h */,
+				16346D31147F27F500E67157 /* DiningGrinViewController.m */,
+				16346D22147F27F500E67157 /* Supporting Files */,
+			);
+			path = DiningGrin;
+			sourceTree = "<group>";
+		};
+		16346D22147F27F500E67157 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				16346D23147F27F500E67157 /* DiningGrin-Info.plist */,
+				16346D24147F27F500E67157 /* InfoPlist.strings */,
+				16346D27147F27F500E67157 /* main.m */,
+				16346D29147F27F500E67157 /* DiningGrin-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16346D16147F27F400E67157 /* DiningGrin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16346D35147F27F500E67157 /* Build configuration list for PBXNativeTarget "DiningGrin" */;
+			buildPhases = (
+				16346D13147F27F400E67157 /* Sources */,
+				16346D14147F27F400E67157 /* Frameworks */,
+				16346D15147F27F400E67157 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiningGrin;
+			productName = DiningGrin;
+			productReference = 16346D17147F27F400E67157 /* DiningGrin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16346D0E147F27F400E67157 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Grinnell College";
+			};
+			buildConfigurationList = 16346D11147F27F400E67157 /* Build configuration list for PBXProject "DiningGrin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 16346D0C147F27F400E67157;
+			productRefGroup = 16346D18147F27F400E67157 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16346D16147F27F400E67157 /* DiningGrin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16346D15147F27F400E67157 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16346D26147F27F500E67157 /* InfoPlist.strings in Resources */,
+				16346D2F147F27F500E67157 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16346D13147F27F400E67157 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16346D28147F27F500E67157 /* main.m in Sources */,
+				16346D2C147F27F500E67157 /* DiningGrinAppDelegate.m in Sources */,
+				16346D32147F27F500E67157 /* DiningGrinViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		16346D24147F27F500E67157 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16346D25147F27F500E67157 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		16346D2D147F27F500E67157 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16346D2E147F27F500E67157 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16346D33147F27F500E67157 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		16346D34147F27F500E67157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16346D36147F27F500E67157 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DiningGrin/DiningGrin-Prefix.pch";
+				INFOPLIST_FILE = "DiningGrin/DiningGrin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		16346D37147F27F500E67157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DiningGrin/DiningGrin-Prefix.pch";
+				INFOPLIST_FILE = "DiningGrin/DiningGrin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16346D11147F27F400E67157 /* Build configuration list for PBXProject "DiningGrin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16346D33147F27F500E67157 /* Debug */,
+				16346D34147F27F500E67157 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16346D35147F27F500E67157 /* Build configuration list for PBXNativeTarget "DiningGrin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16346D36147F27F500E67157 /* Debug */,
+				16346D37147F27F500E67157 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16346D0E147F27F400E67157 /* Project object */;
+}
