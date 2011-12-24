@@ -8,7 +8,9 @@
 
 
 
-#define kDiningMenu [NSURL URLWithString:@"http://www.cs.grinnell.edu/~knolldug/parser/menu.php?mon=12&day=7&year=2011"]
+#define kDiningMenu [NSURL URLWithString:@"http://www.cs.grinnell.edu/~knolldug/parser/menu.php?"]
+
+//mon=12&day=7&year=2011
 
 #import "DiningGrinViewController.h"
 #import "VenueViewController.h"
@@ -16,6 +18,7 @@
 @implementation DiningGrinViewController
 {
     NSDictionary *jsonDict;
+    NSURL *URLwithDate;
 }
 
 @synthesize datePicker;
@@ -28,9 +31,9 @@
 
 
 
--(void)fetchprelimdata
+-(void)fetchprelimdataWithURL:(NSURL *)URL
 {
-    NSData *data = [NSData dataWithContentsOfURL:kDiningMenu];
+    NSData *data = [NSData dataWithContentsOfURL:URL];
     
     NSError * error;
     //NSJSON takes data and then gives you back a founddation object. dict or array. 
@@ -49,7 +52,7 @@
 {
     [super viewDidLoad];
     [self setDatePicker:datePicker];
-    [self fetchprelimdata];
+
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -64,6 +67,22 @@
 - (IBAction)showVenues:(id)sender 
 {
 
+    NSDate *date = [self.datePicker date];
+    NSString *dateString;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    [formatter setDateFormat:@"'mon='MM'&day='d'&year='yyyy"];
+    dateString = [formatter stringFromDate:date];
+
+    NSLog(@"Date String is %@", dateString);
+    
+    NSString *mainURL = [NSString stringWithFormat:@"http://www.cs.grinnell.edu/~knolldug/parser/menu.php?"];
+    NSString *StringWithDate = [mainURL stringByAppendingString:dateString];
+    URLwithDate = [NSURL URLWithString:StringWithDate];
+   // NSLog(@"mainURL is %@", mainURL);
+    NSLog(@"URL is %@", URLwithDate);
+    
+    [self fetchprelimdataWithURL:URLwithDate];
     
         UIAlertView *mealmessage = [[UIAlertView alloc] 
                              initWithTitle:@"Select Meal" 
@@ -128,11 +147,16 @@
     [theDatePicker setMaximumDate:max];
 }
 */
+
+
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowVenueView"]) {
         VenueViewController *controller = segue.destinationViewController;
         controller.menuChoice = sender;
+        controller.mainURL = URLwithDate;
         
     }
 }

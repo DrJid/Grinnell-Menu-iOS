@@ -39,7 +39,7 @@
 
 @synthesize venue;
 @synthesize tableView = _tableView;
-@synthesize menuChoice;
+@synthesize menuChoice , mainURL;
 
 
 
@@ -176,7 +176,7 @@
 
 -(void)fetchData
 {
-    NSData *data = [NSData dataWithContentsOfURL:kDiningMenu];
+    NSData *data = [NSData dataWithContentsOfURL:mainURL];
     
     NSError * error;
     //NSJSON takes data and then gives you back a founddation object. dict or array. 
