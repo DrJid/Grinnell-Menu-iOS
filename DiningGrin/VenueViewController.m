@@ -174,21 +174,9 @@
     return self;
 }
 
-#pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+-(void)fetchData
 {
-}
-*/
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
     NSData *data = [NSData dataWithContentsOfURL:kDiningMenu];
     
     NSError * error;
@@ -202,7 +190,7 @@
     else NSLog(@"No it's not valid");
     
     
-    //You can change this part to LUNCH to get the LUNCH part.. I think here is where we would make the Breakfast/Dinner/LUnch options on the alertview show different things. The underlying code is the same otherwise. 
+    
     
     NSString *key = [[NSString alloc] init];
     if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:3]]) {
@@ -217,15 +205,15 @@
     
     NSDictionary *mainMenu = [jsonDict objectForKey:key]; 
     
- //   NSLog(@"Jsondict count is %d", jsonDict.count);
- //   NSLog(@"Jsond dict is %@", jsonDict);
-   // NSLog(@"Dinner: %@", mainMenu); //3
+    //   NSLog(@"Jsondict count is %d", jsonDict.count);
+    //   NSLog(@"Jsond dict is %@", jsonDict);
+    // NSLog(@"Dinner: %@", mainMenu); //3
     
     //Let's put some data on our screen
-
+    
     
     //This is a dictionary of dictionaries. Each venue is a key in the main dictionary. Thus we will have to sort through each venue(dict) the main jsondict(dict) and create dish objects for each object that is in the venue. 
- //   NSLog(@"Count is %d", [mainMenu count]);
+    //   NSLog(@"Count is %d", [mainMenu count]);
     
     menuVenueNamesFromJSON = [[NSArray alloc] init];
     menuVenueNamesFromJSON = [mainMenu allKeys];
@@ -233,24 +221,23 @@
     
     realMenuFromJSON = [[NSMutableArray alloc] initWithCapacity:10];
     
- //   NSLog(@"realMenuFromJSON count is %d", realMenuFromJSON.count);
-
+    //   NSLog(@"realMenuFromJSON count is %d", realMenuFromJSON.count);
+    
     
     //Here we make an fill up the realMenuFromJSON array to  contain all the venues. 
     for (NSString *venuename in menuVenueNamesFromJSON) {
         Venue *gvenue = [[Venue alloc] init];
         gvenue.name = venuename;
         [realMenuFromJSON addObject:gvenue];
-        NSLog(@"name of venue is %@", gvenue.name);
     }
     
     
     
     /*
-    NSLog(@"The menuVenuesFromJSON count is %d", menuVenueNamesFromJSON.count);
-    NSLog(@"realMenuFromJSON is %@", realMenuFromJSON);
-    NSLog(@"realMenuFromJSON first object is %@", [realMenuFromJSON objectAtIndex:0]);
-    */
+     NSLog(@"The menuVenuesFromJSON count is %d", menuVenueNamesFromJSON.count);
+     NSLog(@"realMenuFromJSON is %@", realMenuFromJSON);
+     NSLog(@"realMenuFromJSON first object is %@", [realMenuFromJSON objectAtIndex:0]);
+     */
     
     
     //So for each Venue...
@@ -258,12 +245,12 @@
         
         //We create a dish
         gVenue.dishes = [[NSMutableArray alloc] initWithCapacity:10];
-
+        
         NSArray *dishesInVenue = [mainMenu objectForKey:gVenue.name];
         
         for (int i = 0; i < dishesInVenue.count; i++) {
             Dish *dish = [[Dish alloc] init];
-
+            
             //loop through for the number of dishes
             NSDictionary *actualdish = [dishesInVenue objectAtIndex:i];
             
@@ -275,12 +262,30 @@
             //then finally we add this new dish to it's venue
             [gVenue.dishes addObject:dish];
         }
-       
-
         
-        NSLog(@"The %@ count is now %d", gVenue.name, gVenue.dishes.count);
+        
+        
     }
 
+}
+
+#pragma mark - View lifecycle
+
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+}
+*/
+
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self fetchData];
+   
 }
 
 
@@ -401,26 +406,7 @@ titleForHeaderInSection:(NSInteger)section
   
   
   [mealmessage show];
-//    [self saveDishes];
-  /*
-    
-    //I'm gonna make change meal just add something to the list. for learning sake. 
-    
-    Dish *dish;
-    
-    dish = [[Dish alloc] init];
-    dish.name = @"ChangeMeal Soup";
-    
-    int newRowIndex = [venuedishes count];
-    
-    [venuedishes addObject:dish];
-    
-    
-    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
-    NSArray *indexPaths = [NSArray arrayWithObject:indexpath];
-    
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
- */   
+  
 }
 
 #pragma mark UIAlertViewDelegate Methods
@@ -446,7 +432,8 @@ titleForHeaderInSection:(NSInteger)section
         }
         
         
-        NSLog(@"Are we even here?");
+        [self fetchData];
+        [self.tableView reloadData];
     }
 }
 
