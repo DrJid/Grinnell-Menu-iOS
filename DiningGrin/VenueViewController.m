@@ -201,6 +201,7 @@
     else NSLog(@"No it's not valid");
     
     
+    //You can change this part to LUNCH to get the LUNCH part.. I think here is where we would make the Breakfast/Dinner/LUnch options on the alertview show different things. The underlying code is the same otherwise. 
     NSDictionary *mainMenu = [jsonDict objectForKey:@"DINNER"];    NSLog(@"Dinner: %@", mainMenu); //3
     
     //Let's put some data on our screen
