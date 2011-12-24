@@ -10,4 +10,7 @@
 
 @interface DiningGrinViewController : UIViewController
 
+
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 @end

@@ -15,6 +15,14 @@
 		16346D2C147F27F500E67157 /* DiningGrinAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D2B147F27F500E67157 /* DiningGrinAppDelegate.m */; };
 		16346D2F147F27F500E67157 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16346D2D147F27F500E67157 /* MainStoryboard.storyboard */; };
 		16346D32147F27F500E67157 /* DiningGrinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D31147F27F500E67157 /* DiningGrinViewController.m */; };
+		16346D3D147F28DA00E67157 /* black-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 16346D39147F28DA00E67157 /* black-button.png */; };
+		16346D3E147F28DA00E67157 /* grey-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 16346D3A147F28DA00E67157 /* grey-button.png */; };
+		16346D3F147F28DA00E67157 /* my-green-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 16346D3B147F28DA00E67157 /* my-green-button.png */; };
+		16346D40147F28DA00E67157 /* my-red-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 16346D3C147F28DA00E67157 /* my-red-button.png */; };
+		16346D4A147F517000E67157 /* VenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D49147F517000E67157 /* VenueViewController.m */; };
+		16346D4D147F522400E67157 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D4C147F522400E67157 /* SettingsViewController.m */; };
+		16AA3D5E1481758800066B20 /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AA3D5D1481758800066B20 /* Dish.m */; };
+		16AA3D621481759700066B20 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AA3D611481759700066B20 /* Venue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +30,27 @@
 		16346D1B147F27F400E67157 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		16346D1D147F27F400E67157 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		16346D1F147F27F400E67157 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		16346D23147F27F500E67157 /* DiningGrin-Info.plist */ = {isa = PBXFileReference; path = "DiningGrin-Info.plist"; sourceTree = "<group>"; };
+		16346D23147F27F500E67157 /* DiningGrin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DiningGrin-Info.plist"; sourceTree = "<group>"; };
 		16346D25147F27F500E67157 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		16346D27147F27F500E67157 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		16346D29147F27F500E67157 /* DiningGrin-Prefix.pch */ = {isa = PBXFileReference; path = "DiningGrin-Prefix.pch"; sourceTree = "<group>"; };
-		16346D2A147F27F500E67157 /* DiningGrinAppDelegate.h */ = {isa = PBXFileReference; path = DiningGrinAppDelegate.h; sourceTree = "<group>"; };
+		16346D29147F27F500E67157 /* DiningGrin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiningGrin-Prefix.pch"; sourceTree = "<group>"; };
+		16346D2A147F27F500E67157 /* DiningGrinAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiningGrinAppDelegate.h; sourceTree = "<group>"; };
 		16346D2B147F27F500E67157 /* DiningGrinAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiningGrinAppDelegate.m; sourceTree = "<group>"; };
 		16346D2E147F27F500E67157 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		16346D30147F27F500E67157 /* DiningGrinViewController.h */ = {isa = PBXFileReference; path = DiningGrinViewController.h; sourceTree = "<group>"; };
+		16346D30147F27F500E67157 /* DiningGrinViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiningGrinViewController.h; sourceTree = "<group>"; };
 		16346D31147F27F500E67157 /* DiningGrinViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiningGrinViewController.m; sourceTree = "<group>"; };
+		16346D39147F28DA00E67157 /* black-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-button.png"; sourceTree = "<group>"; };
+		16346D3A147F28DA00E67157 /* grey-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-button.png"; sourceTree = "<group>"; };
+		16346D3B147F28DA00E67157 /* my-green-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-green-button.png"; sourceTree = "<group>"; };
+		16346D3C147F28DA00E67157 /* my-red-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-red-button.png"; sourceTree = "<group>"; };
+		16346D48147F517000E67157 /* VenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueViewController.h; sourceTree = "<group>"; };
+		16346D49147F517000E67157 /* VenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueViewController.m; sourceTree = "<group>"; };
+		16346D4B147F522400E67157 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		16346D4C147F522400E67157 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		16AA3D5C1481758800066B20 /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
+		16AA3D5D1481758800066B20 /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
+		16AA3D601481759700066B20 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		16AA3D611481759700066B20 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +97,16 @@
 		16346D21147F27F400E67157 /* DiningGrin */ = {
 			isa = PBXGroup;
 			children = (
+				16AA3D631481759D00066B20 /* Model  */,
 				16346D2A147F27F500E67157 /* DiningGrinAppDelegate.h */,
 				16346D2B147F27F500E67157 /* DiningGrinAppDelegate.m */,
 				16346D2D147F27F500E67157 /* MainStoryboard.storyboard */,
 				16346D30147F27F500E67157 /* DiningGrinViewController.h */,
 				16346D31147F27F500E67157 /* DiningGrinViewController.m */,
+				16346D48147F517000E67157 /* VenueViewController.h */,
+				16346D49147F517000E67157 /* VenueViewController.m */,
+				16346D4B147F522400E67157 /* SettingsViewController.h */,
+				16346D4C147F522400E67157 /* SettingsViewController.m */,
 				16346D22147F27F500E67157 /* Supporting Files */,
 			);
 			path = DiningGrin;
@@ -90,12 +115,35 @@
 		16346D22147F27F500E67157 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				16346D38147F28DA00E67157 /* buttons */,
 				16346D23147F27F500E67157 /* DiningGrin-Info.plist */,
 				16346D24147F27F500E67157 /* InfoPlist.strings */,
 				16346D27147F27F500E67157 /* main.m */,
 				16346D29147F27F500E67157 /* DiningGrin-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16346D38147F28DA00E67157 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				16346D39147F28DA00E67157 /* black-button.png */,
+				16346D3A147F28DA00E67157 /* grey-button.png */,
+				16346D3B147F28DA00E67157 /* my-green-button.png */,
+				16346D3C147F28DA00E67157 /* my-red-button.png */,
+			);
+			path = buttons;
+			sourceTree = "<group>";
+		};
+		16AA3D631481759D00066B20 /* Model  */ = {
+			isa = PBXGroup;
+			children = (
+				16AA3D601481759700066B20 /* Venue.h */,
+				16AA3D611481759700066B20 /* Venue.m */,
+				16AA3D5C1481758800066B20 /* Dish.h */,
+				16AA3D5D1481758800066B20 /* Dish.m */,
+			);
+			name = "Model ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +199,10 @@
 			files = (
 				16346D26147F27F500E67157 /* InfoPlist.strings in Resources */,
 				16346D2F147F27F500E67157 /* MainStoryboard.storyboard in Resources */,
+				16346D3D147F28DA00E67157 /* black-button.png in Resources */,
+				16346D3E147F28DA00E67157 /* grey-button.png in Resources */,
+				16346D3F147F28DA00E67157 /* my-green-button.png in Resources */,
+				16346D40147F28DA00E67157 /* my-red-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +216,10 @@
 				16346D28147F27F500E67157 /* main.m in Sources */,
 				16346D2C147F27F500E67157 /* DiningGrinAppDelegate.m in Sources */,
 				16346D32147F27F500E67157 /* DiningGrinViewController.m in Sources */,
+				16346D4A147F517000E67157 /* VenueViewController.m in Sources */,
+				16346D4D147F522400E67157 /* SettingsViewController.m in Sources */,
+				16AA3D5E1481758800066B20 /* Dish.m in Sources */,
+				16AA3D621481759700066B20 /* Venue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +331,7 @@
 				16346D37147F27F500E67157 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
