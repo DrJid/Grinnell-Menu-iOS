@@ -40,6 +40,7 @@
 
 @synthesize venue;
 @synthesize tableView = _tableView;
+@synthesize menuChoice;
 
 
 
@@ -202,13 +203,29 @@
     
     
     //You can change this part to LUNCH to get the LUNCH part.. I think here is where we would make the Breakfast/Dinner/LUnch options on the alertview show different things. The underlying code is the same otherwise. 
-    NSDictionary *mainMenu = [jsonDict objectForKey:@"DINNER"];    NSLog(@"Dinner: %@", mainMenu); //3
+    
+    NSString *key = [[NSString alloc] init];
+    if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:3]]) {
+        key = @"DINNER";
+    } else if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:2]]) {
+        key = @"LUNCH";
+    } else if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:1]]) {
+        key = @"DINNER";
+    }
+    
+    NSLog(@"Key is %@", key);
+    
+    NSDictionary *mainMenu = [jsonDict objectForKey:key]; 
+    
+ //   NSLog(@"Jsondict count is %d", jsonDict.count);
+ //   NSLog(@"Jsond dict is %@", jsonDict);
+   // NSLog(@"Dinner: %@", mainMenu); //3
     
     //Let's put some data on our screen
 
     
     //This is a dictionary of dictionaries. Each venue is a key in the main dictionary. Thus we will have to sort through each venue(dict) the main jsondict(dict) and create dish objects for each object that is in the venue. 
-    NSLog(@"Count is %d", [mainMenu count]);
+ //   NSLog(@"Count is %d", [mainMenu count]);
     
     menuVenueNamesFromJSON = [[NSArray alloc] init];
     menuVenueNamesFromJSON = [mainMenu allKeys];
@@ -216,7 +233,7 @@
     
     realMenuFromJSON = [[NSMutableArray alloc] initWithCapacity:10];
     
-    NSLog(@"realMenuFromJSON count is %d", realMenuFromJSON.count);
+ //   NSLog(@"realMenuFromJSON count is %d", realMenuFromJSON.count);
 
     
     //Here we make an fill up the realMenuFromJSON array to  contain all the venues. 
@@ -229,11 +246,11 @@
     
     
     
-    
+    /*
     NSLog(@"The menuVenuesFromJSON count is %d", menuVenueNamesFromJSON.count);
     NSLog(@"realMenuFromJSON is %@", realMenuFromJSON);
     NSLog(@"realMenuFromJSON first object is %@", [realMenuFromJSON objectAtIndex:0]);
-    
+    */
     
     
     //So for each Venue...
@@ -405,5 +422,35 @@ titleForHeaderInSection:(NSInteger)section
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
  */   
 }
+
+#pragma mark UIAlertViewDelegate Methods
+// Called when an alert button is tapped.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    //I have no idea how to implement this particular alert view yet... 
+
+    
+    if (buttonIndex == 0)
+    {
+        //do nothing....
+    }
+    else
+    {
+        
+        if (buttonIndex == 1) {
+            self.menuChoice = [NSNumber numberWithInt:1];
+        } else if (buttonIndex == 2) {
+            self.menuChoice = [NSNumber numberWithInt:2];
+        } else if (buttonIndex == 3) {
+            self.menuChoice = [NSNumber numberWithInt:3];
+        }
+        
+        
+        NSLog(@"Are we even here?");
+    }
+}
+
+
+
 
 @end

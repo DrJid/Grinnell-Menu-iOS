@@ -15,5 +15,7 @@
 
 @property (nonatomic, strong) Venue *venue;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSNumber * menuChoice;
+
 
 @end

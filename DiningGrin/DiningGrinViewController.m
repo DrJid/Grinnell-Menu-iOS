@@ -7,6 +7,7 @@
 //
 
 #import "DiningGrinViewController.h"
+#import "VenueViewController.h"
 
 @implementation DiningGrinViewController
 @synthesize datePicker;
@@ -60,9 +61,10 @@
     {
         //do nothing....
     }
-    else{
-        
-        [self performSegueWithIdentifier:@"ShowVenueView" sender:nil];
+    else
+    {
+        NSNumber * buttonValue = [NSNumber numberWithInt:buttonIndex];
+        [self performSegueWithIdentifier:@"ShowVenueView" sender:buttonValue];
         
         /*
         VenueView *venueView = 
@@ -86,6 +88,22 @@
     NSDate *max = [[NSDate alloc] initWithTimeIntervalSinceNow:range];
     
     [theDatePicker setMaximumDate:max];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowVenueView"]) {
+        VenueViewController *controller = segue.destinationViewController;
+        
+        if (sender == [NSNumber numberWithInt:1]) {
+            controller.menuChoice = sender;
+        } else if ([sender isEqualToNumber:[NSNumber numberWithInt:2]]) {
+            controller.menuChoice = sender;
+        } else if ([sender isEqualToNumber:[NSNumber numberWithInt:3]]) {
+            controller.menuChoice = sender;
+        }
+        
+    }
 }
 
 @end
