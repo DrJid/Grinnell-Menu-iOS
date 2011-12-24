@@ -31,11 +31,11 @@
     NSMutableArray *realMenuFromJSON;
     
     
-    
+   /* 
     Venue *platDuJourVenue;
     Venue *stirFryVenue;
     Venue *pastaVenue;
-     
+   */  
 }
 
 @synthesize venue;
@@ -105,13 +105,7 @@
 {
     
     if ((self = [super initWithCoder:aDecoder])) {    
-        
-    /************** JSON SECTION ** Will abstract once working ******/ 
-
-
-     
-     
-     /***************************************************************/ 
+   
  /*   
     menuVenues = [[NSMutableArray alloc] initWithCapacity:20];
     
@@ -129,12 +123,6 @@
 
     
     NSLog(@"menuvenues count is %d", menuVenues.count);
- 
-    
-    
-   
-       
-       
        
         
         stirFryVenue.dishes = [[NSMutableArray alloc] init];
@@ -213,14 +201,10 @@
     else NSLog(@"No it's not valid");
     
     
-    NSDictionary *mainMenu = [jsonDict objectForKey:@"DINNER"];// [(NSDictionary*) [jsonDict objectForKey:@"Lunch"] objectForKey:@"Waffle Bar"]; //2
-    
-    NSLog(@"Dinner: %@", mainMenu); //3
+    NSDictionary *mainMenu = [jsonDict objectForKey:@"DINNER"];    NSLog(@"Dinner: %@", mainMenu); //3
     
     //Let's put some data on our screen
-    
-    //1 Get the latest loan. 
-    //    NSDictionary * loan = [latestloans objectAtIndex:0];
+
     
     //This is a dictionary of dictionaries. Each venue is a key in the main dictionary. Thus we will have to sort through each venue(dict) the main jsondict(dict) and create dish objects for each object that is in the venue. 
     NSLog(@"Count is %d", [mainMenu count]);
@@ -234,6 +218,7 @@
     NSLog(@"realMenuFromJSON count is %d", realMenuFromJSON.count);
 
     
+    //Here we make an fill up the realMenuFromJSON array to  contain all the venues. 
     for (NSString *venuename in menuVenueNamesFromJSON) {
         Venue *gvenue = [[Venue alloc] init];
         gvenue.name = venuename;
@@ -250,15 +235,10 @@
     
     
     
-    
-
-    
-    
-    
+    //So for each Venue...
     for (Venue *gVenue in realMenuFromJSON) {
         
         //We create a dish
-        //dish.name = [NSString stringWithFormat:@"Dish for %@", gVenue.name];
         gVenue.dishes = [[NSMutableArray alloc] initWithCapacity:10];
 
         NSArray *dishesInVenue = [mainMenu objectForKey:gVenue.name];
@@ -266,6 +246,7 @@
         for (int i = 0; i < dishesInVenue.count; i++) {
             Dish *dish = [[Dish alloc] init];
 
+            //loop through for the number of dishes
             NSDictionary *actualdish = [dishesInVenue objectAtIndex:i];
             
             dish.name = [actualdish  objectForKey:@"name"];
