@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiningGrinViewController : UIViewController
+@interface DiningGrinViewController : UIViewController <UIAlertViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;

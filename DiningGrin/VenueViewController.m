@@ -8,10 +8,9 @@
 
 
 //To give us a background queue for JSON
-#define kBgQueue dispatch_get_global_queue ( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 //Macro to give us the URL 
-#define kDiningMenu [NSURL URLWithString:@"http://www.cs.grinnell.edu/~knolldug/parser/menu.php?mon=12&day=4&year=2011"]
+#define kDiningMenu [NSURL URLWithString:@"http://www.cs.grinnell.edu/~knolldug/parser/menu.php?mon=12&day=7&year=2011"]
 
 
 
@@ -29,7 +28,7 @@
     
     NSArray *menuVenueNamesFromJSON;
     NSMutableArray *realMenuFromJSON;
-    
+    NSDictionary *jsonDict;
     
    /* 
     Venue *platDuJourVenue;
@@ -181,7 +180,7 @@
     
     NSError * error;
     //NSJSON takes data and then gives you back a founddation object. dict or array. 
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+    jsonDict = [NSJSONSerialization JSONObjectWithData:data
                                                              options:kNilOptions //if you're not only reading but going to modify the objects after reading them, you'd want to pass in the right options. (NSJSONReadingMutablecontainers.. etc
                                                                error:&error];
     if ([NSJSONSerialization isValidJSONObject:jsonDict])
@@ -193,12 +192,14 @@
     
     
     NSString *key = [[NSString alloc] init];
-    if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:3]]) {
-        key = @"DINNER";
-    } else if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:2]]) {
+    if ([self.menuChoice isEqualToString:@"Breakfast"]) {
+        key = @"BREAKFAST";
+    } else if ([self.menuChoice isEqualToString:@"Lunch"]) {
         key = @"LUNCH";
-    } else if ([menuChoice isEqualToNumber: [NSNumber numberWithInt:1]]) {
+    } else if ([self.menuChoice isEqualToString:@"Dinner"]) {
         key = @"DINNER";
+    } else if ([self.menuChoice isEqualToString:@"Outtakes"]) {
+        key = @"OUTTAKES";
     }
     
     NSLog(@"Key is %@", key);
@@ -396,48 +397,57 @@ titleForHeaderInSection:(NSInteger)section
 
 - (IBAction)changeMeal:(id)sender 
 {
-  UIAlertView *mealmessage = [[UIAlertView alloc] 
-  initWithTitle:@"Select Meal" 
-  message:nil
-  delegate:self 
-  cancelButtonTitle:@"Cancel" 
-  otherButtonTitles:@"Breakfast", @"Lunch", @"Dinner", nil
-  ];
-  
-  
-  [mealmessage show];
+
+    
+    UIAlertView *mealmessage = [[UIAlertView alloc] 
+                                initWithTitle:@"Select Meal" 
+                                message:nil
+                                delegate:self 
+                                cancelButtonTitle:@"Cancel" 
+                                otherButtonTitles:nil
+                                ];
+    
+    //Need to find out if it's possible to completely remove text from JSON output when menu is not present. in other words.. Need Dugan!! This way, we can remove the button when no meal is present. 
+    
+    if ([jsonDict objectForKey:@"BREAKFAST"]) {
+        [mealmessage addButtonWithTitle:@"Breakfast"];
+    }
+    
+    if ([jsonDict objectForKey:@"LUNCH"]) {
+        [mealmessage addButtonWithTitle:@"Lunch"];
+    }
+    if ( [jsonDict objectForKey:@"DINNER"]) {
+        [mealmessage addButtonWithTitle:@"Dinner"];
+    }
+    if ([jsonDict objectForKey:@"OUTTAKES"]) {
+        [mealmessage addButtonWithTitle:@"Outtakes"];
+    }
+    
+    [mealmessage show];
+
+    
+    
   
 }
 
 #pragma mark UIAlertViewDelegate Methods
 // Called when an alert button is tapped.
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    //I have no idea how to implement this particular alert view yet... 
 
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSString *titlePressed = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if (buttonIndex == 0)
-    {
-        //do nothing....
+    if (buttonIndex == 0) {
+        return;
     }
-    else
-    {
-        
-        if (buttonIndex == 1) {
-            self.menuChoice = [NSNumber numberWithInt:1];
-        } else if (buttonIndex == 2) {
-            self.menuChoice = [NSNumber numberWithInt:2];
-        } else if (buttonIndex == 3) {
-            self.menuChoice = [NSNumber numberWithInt:3];
-        }
-        
-        
-        [self fetchData];
-        [self.tableView reloadData];
-    }
+    else 
+        self.menuChoice = titlePressed;
+    
+    
+    [self fetchData];
+    [self.tableView reloadData];
 }
-
-
 
 
 @end

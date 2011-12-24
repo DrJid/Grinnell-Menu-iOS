@@ -6,10 +6,18 @@
 //  Copyright (c) 2011 Grinnell College. All rights reserved.
 //
 
+
+
+#define kDiningMenu [NSURL URLWithString:@"http://www.cs.grinnell.edu/~knolldug/parser/menu.php?mon=12&day=7&year=2011"]
+
 #import "DiningGrinViewController.h"
 #import "VenueViewController.h"
 
 @implementation DiningGrinViewController
+{
+    NSDictionary *jsonDict;
+}
+
 @synthesize datePicker;
 
 - (void)didReceiveMemoryWarning
@@ -18,12 +26,30 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+
+-(void)fetchprelimdata
+{
+    NSData *data = [NSData dataWithContentsOfURL:kDiningMenu];
+    
+    NSError * error;
+    //NSJSON takes data and then gives you back a founddation object. dict or array. 
+    jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                               options:kNilOptions 
+                                                 error:&error];
+
+}
+
+
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setDatePicker:datePicker];
+    [self fetchprelimdata];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -44,9 +70,24 @@
                              message:nil
                              delegate:self 
                              cancelButtonTitle:@"Cancel" 
-                             otherButtonTitles:@"Breakfast", @"Lunch", @"Dinner", nil
+                            otherButtonTitles:nil
                              ];
         
+    //Need to find out if it's possible to completely remove text from JSON output when menu is not present. in other words.. Need Dugan!! This way, we can remove the button when no meal is present. 
+    
+    if ([jsonDict objectForKey:@"BREAKFAST"]) {
+        [mealmessage addButtonWithTitle:@"Breakfast"];
+    }
+    
+    if ([jsonDict objectForKey:@"LUNCH"]) {
+        [mealmessage addButtonWithTitle:@"Lunch"];
+    }
+    if ( [jsonDict objectForKey:@"DINNER"]) {
+        [mealmessage addButtonWithTitle:@"Dinner"];
+    }
+    if ([jsonDict objectForKey:@"OUTTAKES"]) {
+        [mealmessage addButtonWithTitle:@"Outtakes"];
+    }
         
         [mealmessage show];
 
@@ -54,28 +95,25 @@
 }
 
 #pragma mark UIAlertViewDelegate Methods
-// Called when an alert button is tapped.
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSString *titlePressed = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if (buttonIndex == 0)
-    {
-        //do nothing....
+    if (buttonIndex == 0) {
+        return;
     }
-    else
-    {
-        NSNumber * buttonValue = [NSNumber numberWithInt:buttonIndex];
-        [self performSegueWithIdentifier:@"ShowVenueView" sender:buttonValue];
-        
-        /*
-        VenueView *venueView = 
-        [[VenueView alloc] initWithNibName:@"VenueView" bundle:nil];
-        [self.navigationController pushViewController:venueView animated:YES];
-        [venueView release];*/
-    }
+    else 
+        [self performSegueWithIdentifier:@"ShowVenueView" sender:titlePressed];
 }
 
 #pragma mark --DatePicker Methods
 
+
+//I'm disabling the forward datePicker so we can test with past dates. Dec 01 - Dec 15 .. Still need to implement this though
+
+/*
 -(void)setDatePicker:(UIDatePicker *)theDatePicker
 {
     NSDate *now = [NSDate date]; 
@@ -89,21 +127,15 @@
     
     [theDatePicker setMaximumDate:max];
 }
-
+*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowVenueView"]) {
         VenueViewController *controller = segue.destinationViewController;
-        
-        if (sender == [NSNumber numberWithInt:1]) {
-            controller.menuChoice = sender;
-        } else if ([sender isEqualToNumber:[NSNumber numberWithInt:2]]) {
-            controller.menuChoice = sender;
-        } else if ([sender isEqualToNumber:[NSNumber numberWithInt:3]]) {
-            controller.menuChoice = sender;
-        }
+        controller.menuChoice = sender;
         
     }
 }
+
 
 @end
