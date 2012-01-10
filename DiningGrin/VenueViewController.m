@@ -52,10 +52,11 @@
 
 -(void)resetFilters
 {
+    
     [filteredArray removeAllObjects];
     
     
-    
+    //and then re-create them
     
     for (NSString *venuename in menuVenueNamesFromJSON) {
         Venue *gvenue = [[Venue alloc] init];
@@ -129,39 +130,39 @@
 //The problem with these filters.. if both filters are on. the entire array will be empty.. coz they are currently mutually exclusive in the JSON.. which i think shouldn't be based on my understadning of ovolacto.. All vegan should be ovolacto right??         
     
     
-    NSMutableArray *sectionsToRemove = [[NSMutableArray alloc] init];
+    NSMutableArray *venuesToRemove = [[NSMutableArray alloc] init];
 
     for (Venue *eachVenue in filteredArray) {
         
-        NSMutableArray *toRemove = [[NSMutableArray alloc] init];
+        NSMutableArray *dishesToRemove = [[NSMutableArray alloc] init];
         
         for (Dish *eachDish in eachVenue.dishes) {
             
             if (veganFilterIsOn) {
 
                 if (!eachDish.vegan) 
-                    [toRemove addObject:eachDish];
+                    [dishesToRemove addObject:eachDish];
             }
             
             if (ovolactoFilterIsOn) {
                 
                 if (!eachDish.ovolacto) {
-                    [toRemove addObject:eachDish];
+                    [dishesToRemove addObject:eachDish];
                 }
             }
             
         }
         
         //If the dishes count is the same, then that venue need not exist at all.. so we remove it. 
-        if (eachVenue.dishes.count == toRemove.count) 
-            [sectionsToRemove addObject:eachVenue];
+        if (eachVenue.dishes.count == dishesToRemove.count) 
+            [venuesToRemove addObject:eachVenue];
         
         
-            [eachVenue.dishes removeObjectsInArray:toRemove];
+            [eachVenue.dishes removeObjectsInArray:dishesToRemove];
         
     }
     
-    [filteredArray removeObjectsInArray:sectionsToRemove];
+    [filteredArray removeObjectsInArray:venuesToRemove];
     [self.tableView reloadData];
 
 }
@@ -235,12 +236,7 @@
     jsonDict = [NSJSONSerialization JSONObjectWithData:data
                                                options:kNilOptions //if you're not only reading but going to modify the objects after reading them, you'd want to pass in the right options. (NSJSONReadingMutablecontainers.. etc
                                                  error:&error];
-    /*   if ([NSJSONSerialization isValidJSONObject:jsonDict])
-     NSLog(@"yes it's valid");
-     
-     else NSLog(@"No it's not valid");
-     
-     */  
+
     
     
     NSString *key = [[NSString alloc] init];
@@ -258,11 +254,7 @@
     
     mainMenu = [jsonDict objectForKey:key]; 
     
-    //   NSLog(@"Jsondict count is %d", jsonDict.count);
-    //   NSLog(@"Jsond dict is %@", jsonDict);
-    // NSLog(@"Dinner: %@", mainMenu); //3
-    
-    //Let's put some data on our screen
+
     
     
     //This is a dictionary of dictionaries. Each venue is a key in the main dictionary. Thus we will have to sort through each venue(dict) the main jsondict(dict) and create dish objects for each object that is in the venue. 
@@ -378,6 +370,11 @@
 }
 
 
+
+
+
+#pragma mark - Table view data source
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     // Venue *grinvenue = [menuVenues objectAtIndex:indexPath.section];
@@ -405,15 +402,12 @@
     else NSLog(@"Dish is NOT vegan.... sorry.");
     
     
-     if (dish.ovolacto) {
-     NSLog(@"Dish is ovolacto");
-     }
-     else NSLog(@"Dish is NOT ovolacto.... sorry.");
-     
+    if (dish.ovolacto) {
+        NSLog(@"Dish is ovolacto");
+    }
+    else NSLog(@"Dish is NOT ovolacto.... sorry.");
+    
 }
-
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -469,21 +463,26 @@ titleForHeaderInSection:(NSInteger)section
     return cell;
 }
 
+
+
+
+#pragma mark - SettingsViewController Delegate Methods
+
 - (void)SettingsViewControllerDidCancel:(SettingsViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//This is a diagnostic thing! Not related at all! 
-
+//Here is how we pass data from the settings screen to this screen. The value of the switches is sent to this screen throught this protocol method. And used to set the filter booleans and subsequently, the view will be reloaded when the filter is implemented.
 
 -(void)SettingsDetailViewControllerDidFinishFiltering:(SettingsViewController *)controller with:(BOOL)veganSwitchValue with:(BOOL)ovolactoSwitchValue
 {
     veganFilterIsOn = veganSwitchValue;
-    NSLog(@"veganswitchvalue is %d", veganSwitchValue);
-    NSLog(@"veganFilterison is %d", veganFilterIsOn);
-
     ovolactoFilterIsOn = ovolactoSwitchValue;
+
+   // NSLog(@"veganswitchvalue is %d", veganSwitchValue);
+   // NSLog(@"veganFilterison is %d", veganFilterIsOn);
+
     [self implementFilters];
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -498,6 +497,7 @@ titleForHeaderInSection:(NSInteger)section
         UINavigationController *navigationController = segue.destinationViewController;
         SettingsViewController *controller = (SettingsViewController *)navigationController.topViewController;
         controller.delegate = self;
+        
         controller.veganSwitchValue = veganFilterIsOn;
         controller.ovolactoSwitchValue = ovolactoFilterIsOn;
         
@@ -516,8 +516,7 @@ titleForHeaderInSection:(NSInteger)section
                                 otherButtonTitles:nil
                                 ];
     
-    //Need to find out if it's possible to completely remove text from JSON output when menu is not present. in other words.. Need Dugan!! This way, we can remove the button when no meal is present. 
-    
+    //Completely remove text from JSON output when menu is not present. in other words.. Removes the button from the alert view if no meal is present for that day.    
     if ([jsonDict objectForKey:@"BREAKFAST"]) {
         [mealmessage addButtonWithTitle:@"Breakfast"];
     }
@@ -535,7 +534,7 @@ titleForHeaderInSection:(NSInteger)section
     [mealmessage show];
     
     
-    //  [self.tableView reloadData];
+
     
 }
 
@@ -556,7 +555,6 @@ titleForHeaderInSection:(NSInteger)section
     
     [self fetchData];
     [self implementFilters];
-   // [self.tableView reloadData];
 }
 
 

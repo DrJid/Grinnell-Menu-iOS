@@ -124,9 +124,11 @@
 
 - (IBAction)switchChanged:(id)sender
 {
+    //Hmm.. i probably don't even need these methods at all.. considering i'm only using the value of the switch when Done is clicked and not when the switch is changed...  might take them out when i'm 100% sure i don't need them.
+    
     if (sender == veganSwitch) {
         
-        BOOL setting = veganSwitch.isOn;
+       // BOOL setting = veganSwitch.isOn;
         //Do something.
         //get vegan switch value
         //Set the model using the current value of vegan switch. 

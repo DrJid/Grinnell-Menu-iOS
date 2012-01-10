@@ -160,7 +160,7 @@
 #pragma mark --DatePicker Methods
 
 
-//I'm disabling the forward datePicker so we can test with past dates. Dec 0 - Dec 27 .. 
+//I'm disabling the forward datePicker so we can test with past dates. 
 
 /*
 -(void)setDatePicker:(UIDatePicker *)theDatePicker

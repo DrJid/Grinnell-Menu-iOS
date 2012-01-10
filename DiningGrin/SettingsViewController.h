@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#define kVeganFilterTagSwitch 1
-#define kOvolactoFilterTagSwitch 2
+
 
 @class SettingsViewController;
 
