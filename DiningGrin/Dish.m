@@ -11,7 +11,7 @@
 @implementation Dish
 
 @synthesize name = _name;
-@synthesize vegan, ovolacto, hasNutrition;
+@synthesize vegan, ovolacto, hasNutrition, halal, passover;
 
 
 //If every single time the app is run, the dishes are pulled from the php file... do we need to decode/encode anything? 
@@ -38,4 +38,19 @@
     }
     return self;
 }
+
+-(id) copyWithZone: (NSZone *) zone {
+    
+    Dish *newDish = [[Dish allocWithZone:zone] init];
+    newDish.name = self.name;
+    newDish.ovolacto = self.ovolacto;
+    newDish.hasNutrition = self.hasNutrition;
+    newDish.halal = self.halal;
+    newDish.passover = self.passover;
+    
+    return newDish;
+ 
+}
+
+
 @end

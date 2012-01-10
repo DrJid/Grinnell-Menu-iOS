@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#define kVeganFilterTagSwitch 1
+#define kOvolactoFilterTagSwitch 2
 
 @class SettingsViewController;
 
@@ -14,7 +16,7 @@
 
 - (void)SettingsViewControllerDidCancel:(SettingsViewController *)controller;
 
-- (void)SettingsDetailViewControllerDidFinishFiltering:(SettingsViewController *)controller;
+- (void)SettingsDetailViewControllerDidFinishFiltering:(SettingsViewController *)controller with:(BOOL)veganSwitchValue with:(BOOL)ovolactoSwitchValue;
 
 @end
 
@@ -22,6 +24,16 @@
 
 
 @property (nonatomic,weak) id <SettingsViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSArray *filters;
+
+@property (weak, nonatomic) IBOutlet UISwitch *veganSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *ovolactoSwitch;
+
+@property BOOL veganSwitchValue;
+@property BOOL ovolactoSwitchValue;
+
+
+- (IBAction)switchChanged:(id)sender;
 
 
 @end

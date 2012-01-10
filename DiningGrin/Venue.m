@@ -12,6 +12,30 @@
 @synthesize name = _name;
 @synthesize dishes = _dishes;
 
+
+
+-(id) copyWithZone: (NSZone *) zone {
+    
+    Venue *newVenue = [[Venue allocWithZone:zone] init];
+    
+    newVenue.name = self.name;
+    newVenue.dishes = [NSMutableArray arrayWithArray:self.dishes];
+
+    return newVenue;
+    
+}
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    Venue *newVenue = [[Venue allocWithZone:zone] init];
+    
+    newVenue.name = self.name;
+    newVenue.dishes = [NSMutableArray arrayWithArray:self.dishes];
+    
+    return newVenue;
+}
+
+
 /*
 
 - (id)init

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Venue : NSObject
+@interface Venue : NSObject <NSCopying>
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSMutableArray *dishes;

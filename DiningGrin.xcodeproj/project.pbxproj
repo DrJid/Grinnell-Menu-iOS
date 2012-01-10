@@ -23,6 +23,8 @@
 		16346D4D147F522400E67157 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16346D4C147F522400E67157 /* SettingsViewController.m */; };
 		16AA3D5E1481758800066B20 /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AA3D5D1481758800066B20 /* Dish.m */; };
 		16AA3D621481759700066B20 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AA3D611481759700066B20 /* Venue.m */; };
+		16B5E6E014ADDC9200ECF640 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B5E6DF14ADDC9200ECF640 /* Filter.m */; };
+		16FD1E6914BB618C0002842C /* NSArray+MutableDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD1E6814BB618C0002842C /* NSArray+MutableDeepCopy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,10 @@
 		16AA3D5D1481758800066B20 /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
 		16AA3D601481759700066B20 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		16AA3D611481759700066B20 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		16B5E6DE14ADDC9200ECF640 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		16B5E6DF14ADDC9200ECF640 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		16FD1E6714BB618C0002842C /* NSArray+MutableDeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MutableDeepCopy.h"; sourceTree = "<group>"; };
+		16FD1E6814BB618C0002842C /* NSArray+MutableDeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MutableDeepCopy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,8 @@
 				16346D49147F517000E67157 /* VenueViewController.m */,
 				16346D4B147F522400E67157 /* SettingsViewController.h */,
 				16346D4C147F522400E67157 /* SettingsViewController.m */,
+				16FD1E6714BB618C0002842C /* NSArray+MutableDeepCopy.h */,
+				16FD1E6814BB618C0002842C /* NSArray+MutableDeepCopy.m */,
 				16346D22147F27F500E67157 /* Supporting Files */,
 			);
 			path = DiningGrin;
@@ -142,6 +150,8 @@
 				16AA3D611481759700066B20 /* Venue.m */,
 				16AA3D5C1481758800066B20 /* Dish.h */,
 				16AA3D5D1481758800066B20 /* Dish.m */,
+				16B5E6DE14ADDC9200ECF640 /* Filter.h */,
+				16B5E6DF14ADDC9200ECF640 /* Filter.m */,
 			);
 			name = "Model ";
 			sourceTree = "<group>";
@@ -220,6 +230,8 @@
 				16346D4D147F522400E67157 /* SettingsViewController.m in Sources */,
 				16AA3D5E1481758800066B20 /* Dish.m in Sources */,
 				16AA3D621481759700066B20 /* Venue.m in Sources */,
+				16B5E6E014ADDC9200ECF640 /* Filter.m in Sources */,
+				16FD1E6914BB618C0002842C /* NSArray+MutableDeepCopy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

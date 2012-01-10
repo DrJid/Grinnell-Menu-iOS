@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Dish : NSObject <NSCoding>
+@interface Dish : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign ) BOOL ovolacto;
 @property (nonatomic, assign) BOOL  vegan;
+@property (nonatomic, assign) BOOL  passover;
+@property (nonatomic, assign) BOOL  halal;
+
+
 @property (nonatomic, assign) BOOL  hasNutrition;
 
 

@@ -10,7 +10,8 @@
 #import "SettingsViewController.h"
 
 @class Venue;
-@interface VenueViewController : UIViewController <SettingsViewControllerDelegate>
+@interface VenueViewController : UIViewController <SettingsViewControllerDelegate,
+                                                UITableViewDelegate, UITableViewDataSource>
 
 
 @property (nonatomic, strong) Venue *venue;
@@ -18,5 +19,7 @@
 @property (nonatomic, strong) NSString * menuChoice;
 @property (nonatomic, strong) NSURL * mainURL;
 
+- (void)initialiseFilters;
+- (void)implementFilters;
 
 @end
