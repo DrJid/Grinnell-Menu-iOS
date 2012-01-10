@@ -18,7 +18,7 @@
 #import "Dish.h"
 #import "Venue.h"
 #import "SettingsViewController.h"
-//#import "Filter.h"
+//#import "Filter.h" I'm not using the filters class i created initially. The filter values are coming directly from the switches.
 #import "NSArray+MutableDeepCopy.h"
 
 
@@ -36,13 +36,7 @@
     
     BOOL veganFilterIsOn;
     BOOL ovolactoFilterIsOn;
-    
-    
-    /* 
-     Venue *platDuJourVenue;
-     Venue *stirFryVenue;
-     Venue *pastaVenue;
-     */  
+ 
 }
 
 @synthesize venue;
@@ -51,24 +45,9 @@
 
 - (void)initialiseFilters
 {
-    /*
-    Filter *nofilter = [[Filter alloc] init];
-    nofilter.isChecked = YES;
-    nofilter.name = @"All";
-    
-    Filter *veganFilter = [[Filter alloc] init];
-    veganFilter.isChecked = NO;
-    veganFilter.name = @"Vegan";
-    
-    Filter *ovolactoFilter = [[Filter alloc] init];
-    ovolactoFilter.isChecked = NO;
-    ovolactoFilter.name = @"Ovolacto";
-    
-    filters = [NSArray arrayWithObjects:nofilter, veganFilter, ovolactoFilter, nil];
-    */
-    
-    veganFilterIsOn = NO;
-    ovolactoFilterIsOn = NO;
+
+    veganFilterIsOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"VeganSwitchValue"];
+    ovolactoFilterIsOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"OvolactoSwitchValue"];
 }
 
 -(void)resetFilters
@@ -85,14 +64,7 @@
         
     }
     
-    
-    
-    /*
-     NSLog(@"The menuVenuesFromJSON count is %d", menuVenueNamesFromJSON.count);
-     NSLog(@"realMenuFromJSON is %@", realMenuFromJSON);
-     NSLog(@"realMenuFromJSON first object is %@", [realMenuFromJSON objectAtIndex:0]);
-     */
-    
+
     
     //So for each Venue...
     for (Venue *gVenue in filteredArray) {
@@ -144,7 +116,7 @@
     
     [self resetFilters];
     
-    //If both filters are off, don't waste time doing anything... 
+    //If both filters are off, don't waste resources doing anything... 
     if (!veganFilterIsOn && !ovolactoFilterIsOn) {
         NSLog(@"resetting everything");
         [self.tableView reloadData];
@@ -152,8 +124,9 @@
 
     }
     
-
-    NSLog(@"Went through though");
+    
+    
+//The problem with these filters.. if both filters are on. the entire array will be empty.. coz they are currently mutually exclusive in the JSON.. which i think shouldn't be based on my understadning of ovolacto.. All vegan should be ovolacto right??         
     
     
     NSMutableArray *sectionsToRemove = [[NSMutableArray alloc] init];
@@ -179,6 +152,7 @@
             
         }
         
+        //If the dishes count is the same, then that venue need not exist at all.. so we remove it. 
         if (eachVenue.dishes.count == toRemove.count) 
             [sectionsToRemove addObject:eachVenue];
         
@@ -186,6 +160,7 @@
             [eachVenue.dishes removeObjectsInArray:toRemove];
         
     }
+    
     [filteredArray removeObjectsInArray:sectionsToRemove];
     [self.tableView reloadData];
 
@@ -312,12 +287,6 @@
     }
     
     
-    
-    /*
-     NSLog(@"The menuVenuesFromJSON count is %d", menuVenueNamesFromJSON.count);
-     NSLog(@"realMenuFromJSON is %@", realMenuFromJSON);
-     NSLog(@"realMenuFromJSON first object is %@", [realMenuFromJSON objectAtIndex:0]);
-     */
     
     
     //So for each Venue...

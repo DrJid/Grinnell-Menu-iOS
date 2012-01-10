@@ -49,6 +49,10 @@
     
     NSLog(@"veganswitchvalue in settignsview is %d", veganSwitchValue);
     
+    [[NSUserDefaults standardUserDefaults]  setBool:veganSwitchValue forKey:@"VeganSwitchValue"]; 
+    [[NSUserDefaults standardUserDefaults]  setBool:ovolactoSwitchValue forKey:@"OvolactoSwitchValue"];  
+
+    
     [self.delegate SettingsDetailViewControllerDidFinishFiltering:self with:veganSwitchValue with:ovolactoSwitchValue];
 }
 
@@ -58,6 +62,9 @@
 {
     [super viewDidLoad];
     
+
+    veganSwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"VeganSwitchValue"];
+    ovolactoSwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"OvolactoSwitchValue"];
     
     [veganSwitch setOn:veganSwitchValue];
     veganSwitch.onTintColor = [UIColor redColor];
